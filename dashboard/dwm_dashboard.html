@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="min-h-screen bg-zinc-950 text-zinc-100">
 <head>
-<meta name="oak-dashboard-server" content="true">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ROS2 Professional Operational Dashboard</title>
@@ -74,10 +73,6 @@
             animation: pulse-yellow 2s infinite ease-in-out;
         }
     </style>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xterm/xterm@5.5.0/css/xterm.css">
-<script src="https://cdn.jsdelivr.net/npm/@xterm/xterm@5.5.0/lib/xterm.js"></script>
-<style>.ft-box{background:#050708;border:1px solid #48504d;border-radius:3px;font:12px 'JetBrains Mono',monospace;color:#c5d4cf}.ft-top{display:flex;justify-content:space-between;align-items:center;gap:15px;border-bottom:1px solid #303934;padding:14px 16px;flex-wrap:wrap}.ft-top strong{color:#e6ece7;letter-spacing:1px}.ft-top>span,.ft-label{color:#a998bd;font-size:11px;letter-spacing:1px}.ft-pathbar{display:flex;gap:8px;padding:14px;border-bottom:1px solid #303934;align-items:center}.ft-pathbar>span{color:#facc15}.dev .ft-pathbar input{flex:1;min-width:60px;border-color:#80712e;background:#080c0e}.ft-browser{display:grid;grid-template-columns:165px minmax(260px,1.3fr) minmax(220px,1fr);min-height:410px}.ft-places{padding:15px;border-right:1px solid #303934}.dev .ft-places button{width:100%;margin-top:9px;text-align:left;border:0;background:transparent;padding:6px 0}.ft-places p{overflow-wrap:anywhere;font-size:10px;color:#8c998f;margin-top:10px}.dev .ft-places input{width:100%;font-size:10px}.ft-directory{min-width:0;border-right:1px solid #303934}.ft-columns,.dev .ft-row{display:grid;grid-template-columns:minmax(100px,1fr) 65px 85px;gap:8px;padding:9px 12px;text-align:left}.ft-columns{font-size:10px;color:#829589;border-bottom:1px solid #303934}.dev .ft-row{width:100%;border:0;border-radius:0;background:transparent;font-size:11px;color:#b8c6bb}.dev .ft-row.ft-selected{background:#293018;color:#ffe271;outline:1px solid #655d30;outline-offset:-1px}.ft-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}#ft-list{height:340px;overflow:auto;outline:none}#ft-list:focus{box-shadow:inset 0 0 0 1px #c4a43c}.ft-preview-pane{padding:14px;min-width:0}.dev #ft-preview{color:#b4c6bb;font-size:11px;max-height:340px;margin-top:12px}.ft-empty{padding:24px;color:#798b7f}.ft-status,#ft-selection{padding:10px 14px;border-top:1px solid #303934;font-size:10px;color:#92a89a;overflow-wrap:anywhere}#ft-terminal{padding:12px;min-height:360px;overflow:hidden}#ft-shell-state{color:#facc15;font-size:10px}.ft-note{line-height:1.6}.dev .xterm textarea{min-height:0;padding:0;border:0} @media(max-width:1100px){.ft-browser{grid-template-columns:145px minmax(220px,1fr)}.ft-preview-pane{grid-column:1/-1;border-top:1px solid #303934}}@media(max-width:600px){.ft-browser{grid-template-columns:1fr}.ft-places{border-right:0;border-bottom:1px solid #303934}.ft-pathbar{flex-wrap:wrap}}
-</style>
 </head>
 <body class="font-sans antialiased min-h-screen flex flex-col selection:bg-brand-400 selection:text-zinc-950">
 
@@ -154,27 +149,13 @@
         </div>
     </header>
 
-<style>
-.developer-mode header .flex.items-center.gap-3.text-xs.font-mono{display:none}.workspace-tabs{display:flex;gap:8px;padding:12px 24px;background:#111214;border-bottom:1px solid #303238}.workspace-tabs button,.dev button,.dev select,.dev input,.dev textarea{border:1px solid #363a43;background:#15181d;border-radius:6px;padding:7px 11px;color:#d8dee9;font:12px 'JetBrains Mono',monospace}.workspace-tabs button.selected,.dev button.selected{color:#facc15;border-color:#a08725;background:#292615}.dev{background:#090b0e;color:#d8dee9;min-height:80vh}.dev-shell{display:grid;grid-template-columns:190px minmax(0,1fr)}.dev-sidebar{padding:22px 12px;border-right:1px solid #262b32;background:#0e1115}.dev-sidebar button{display:block;width:100%;text-align:left;margin:5px 0;padding:11px}.dev-content{padding:24px;min-width:0}.dev h2{font-size:22px;font-weight:700}.dev h3{font-size:13px;font-weight:600;margin-bottom:14px}.dev .eyebrow{font:10px 'JetBrains Mono';letter-spacing:2px;color:#facc15;margin-bottom:6px}.dev .muted{font-size:11px;color:#85909f}.dev .toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:15px 0}.dev .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.dev .card{background:#11151a;border:1px solid #29303a;border-radius:10px;padding:18px;min-width:0}.dev .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}.dev .value{font:26px 'JetBrains Mono';margin:8px 0;color:#edf3fc}.dev canvas{width:100%;height:230px;display:block}.dev table{width:100%;font:11px 'JetBrains Mono';border-collapse:collapse}.dev td,.dev th{text-align:left;padding:10px 7px;border-bottom:1px solid #252b34;overflow-wrap:anywhere}.dev th{color:#8e99a7}.dev pre{white-space:pre-wrap;overflow-wrap:anywhere;max-height:450px;overflow:auto;font:11px 'JetBrains Mono'}.dev textarea{width:100%;min-height:130px}.dev .good{color:#4ed5a1}.dev .warn{color:#facc15}.dev .bad{color:#fb7185}.dev .wide{grid-column:1/-1}.dev .bar{height:5px;background:#242b34;border-radius:3px;margin-top:7px}.dev .bar span{display:block;height:100%;background:#52bfd5}.dev svg{width:100%;min-height:350px}.dev .scroll{overflow:auto;max-height:560px}.dev .legend{font:10px 'JetBrains Mono';color:#8e99a7;margin-top:9px}@media(max-width:900px){.dev-shell{grid-template-columns:1fr}.dev-sidebar{display:flex;overflow:auto;padding:8px}.dev-sidebar button{width:auto;white-space:nowrap}.dev .grid{grid-template-columns:1fr}.dev .metrics{grid-template-columns:repeat(2,1fr)}.dev-content{padding:12px}}
-</style><nav class="workspace-tabs"><button id="user-tab" class="selected" onclick="switchWorkspace(false)">User</button><button id="developer-tab" onclick="switchWorkspace(true)">Developer ↗</button><button id="depth-tab" onclick="showDepthNavigation()">Depth Navigation</button></nav>
-<style>
-#depth-workspace .depth-pad{display:grid;grid-template-columns:repeat(3,60px);gap:8px;justify-content:center;margin:20px 0}
-#depth-workspace .depth-pad button{font-size:22px;color:#facc15;touch-action:none}
-#depth-workspace .danger{background:#2c151e;border-color:#883249;color:#fb7185}
-#depth-workspace .metrics{grid-template-columns:repeat(3,1fr)}
-#depth-workspace .metrics div{background:#090b0e;padding:12px;border:1px solid #29303a;border-radius:6px}
-#depth-workspace .metrics b{display:block;margin-top:6px;font:20px 'JetBrains Mono',monospace}
-#depth-workspace img{width:100%;aspect-ratio:16/9;object-fit:contain;background:#050708;border-radius:6px}
-#depth-workspace canvas{height:auto;aspect-ratio:1;image-rendering:pixelated;background:#050708;cursor:crosshair}
-#depth-workspace p{font-size:12px;line-height:1.6;margin:12px 0}#depth-workspace small{color:#85909f}
-#depth-workspace input[type=checkbox]{accent-color:#facc15}#depth-status{color:#facc15}
-</style><section id="depth-workspace" class="dev" hidden><div class="dev-content"><div class="eyebrow">APOLLO / DEPTH NAVIGATION</div>
-<div class="toolbar"><div><h1>Depth mapping & navigation</h1><small>OAK / ROBOT CONTROL</small></div><span id="depth-status">Connecting…</span></div>
-<div class="grid"><section class="card"><h2>LIVE RGB CAMERA</h2><img id="depth-camera" alt="Waiting for OAK RGB frames"><div class="metrics"><div><small>Mode</small><b id="depth-mode">—</b></div><div><small>Speed</small><b id="depth-speed">—</b></div><div><small>Battery</small><b id="depth-battery">—</b></div></div><p id="depth-reason">Waiting for robot telemetry</p><div class="toolbar"><button class="danger" id="depth-stop">EMERGENCY STOP</button><button id="depth-release">Release stop</button><button id="depth-manual">Manual mode</button><button id="depth-auto">Navigation mode</button></div><div class="depth-pad"><span></span><button data-v="0.12,0" aria-label="Forward">↑</button><span></span><button data-v="0,0.3" aria-label="Turn left">←</button><button id="depth-halt" aria-label="Stop">■</button><button data-v="0,-0.3" aria-label="Turn right">→</button><span></span><button data-v="-0.10,0" aria-label="Reverse">↓</button></div><p>Hold a direction to drive; releasing stops. Manual input pauses navigation control. Re-enable Navigation mode to resume. Space activates emergency stop.</p></section>
-<section class="card"><h2>OCCUPANCY MAP</h2><canvas id="depth-map" width="600" height="600"></canvas><p><label><input type="checkbox" id="depth-goalEnabled"> Enable click-to-set navigation goal</label></p><p>Click a free area on the map to navigate. The final heading is map +X. Start navigation with a saved robot map first.</p><p id="depth-nav">Idle</p><small>White: free · Black: occupied · Grey: unknown · Blue: robot</small></section></div><p class="muted">Camera stream: /camera/image_raw/compressed · Stop commands have a software watchdog. Use the robot's physical stop when working on motors.</p>
-</div></section>
-<section id="developer-workspace" class="dev" hidden><div class="dev-shell"><aside class="dev-sidebar" id="dev-nav"></aside><div class="dev-content"><div class="eyebrow">APOLLO / ENGINEERING WORKSPACE</div><h2 id="dev-title">Overview</h2><div class="toolbar"><span class="muted" id="dev-link">Disconnected · waiting for ROS bridge</span><select id="dev-window"><option value="30">30 seconds</option><option value="120" selected>2 minutes</option><option value="600">10 minutes</option></select><button id="dev-pause">Pause view</button><button id="dev-export">Export telemetry JSON</button></div><div id="dev-body"></div><div id="files-terminal" hidden></div><p class="muted" style="margin-top:18px">REAL TELEMETRY ONLY · Rates reflect browser receipt · History limited to 10 minutes / 12,000 samples per signal</p></div></div></section>
-    <main id="user-workspace" class="flex-1 p-4 grid grid-cols-1 lg:grid-cols-12 gap-4 max-w-[1920px] w-full mx-auto">
+    <nav aria-label="Dashboard views" style="display:flex;gap:8px;padding:12px 16px;background:#18181b">
+        <button id="tab-dwm" onclick="setDashboardTab('dwm')" aria-pressed="true" style="padding:10px 16px;border:1px solid #71717a;border-radius:8px">DWM Dashboard</button>
+        <button id="tab-oak" onclick="setDashboardTab('oak')" aria-pressed="false" style="padding:10px 16px;border:1px solid #71717a;border-radius:8px">OAK Navigation</button>
+        <a href="/navigation" target="_blank" rel="noopener" style="padding:10px;color:#facc15">Open OAK in new browser tab ↗</a>
+    </nav>
+    <iframe id="oak-navigation" title="OAK depth mapping and navigation" hidden style="width:100%;height:1100px;border:0"></iframe>
+    <main id="dwm-main" class="flex-1 p-4 grid grid-cols-1 lg:grid-cols-12 gap-4 max-w-[1920px] w-full mx-auto">
         
         <div class="lg:col-span-7 flex flex-col gap-4">
             
@@ -484,7 +465,7 @@
         </div>
     </main>
 
-    <footer id="user-footer" class="bg-zinc-900 border-t border-zinc-800 p-4 shrink-0 shadow-inner mt-auto">
+    <footer class="bg-zinc-900 border-t border-zinc-800 p-4 shrink-0 shadow-inner mt-auto">
         <div class="max-w-[1920px] mx-auto flex flex-col md:flex-row gap-4 items-stretch h-36">
             <div class="md:w-1/4 flex flex-col justify-between">
                 <div>
@@ -896,7 +877,7 @@
         const activeKeys = { w: false, a: false, s: false, d: false, ArrowUp: false, ArrowLeft: false, ArrowDown: false, ArrowRight: false };
 
         window.addEventListener('keydown', (e) => {
-            if (window.depthActive || window.developerActive || ['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)) return;
+            if (dashboardTab !== 'dwm' || document.activeElement.tagName === 'INPUT') return;
 
             let handled = false;
             const step = 5;
@@ -934,7 +915,7 @@
         });
 
         window.addEventListener('keyup', (e) => {
-            if (window.depthActive || window.developerActive) return;
+            if (dashboardTab !== 'dwm') return;
             if (e.key in activeKeys) {
                 activeKeys[e.key] = false;
                 updateVisualKeys(e.key, false);
@@ -1012,9 +993,9 @@
             publishTwist(0, 0);
         }
 
-        window.addEventListener('blur', () => { if (!window.depthActive) stopRobot(); });
+        window.addEventListener('blur', stopRobot);
         document.addEventListener('visibilitychange', () => {
-            if (document.hidden && !window.depthActive) stopRobot();
+            if (document.hidden) stopRobot();
         });
 
         // --- HIGH RESOLUTION ANALOG JOYSTICK ---
@@ -1534,158 +1515,34 @@
             requestAnimationFrame(runMainLoop);
         };
     </script>
-<script>
-window.developerActive=false;
-function switchWorkspace(on){
- hideDepthNavigation();
- if(on){if(state.simTwist.linear!==0||state.simTwist.angular!==0)stopRobot();Object.keys(activeKeys).forEach(k=>activeKeys[k]=false);}
- window.developerActive=on;
- if(!on)FileTerminal.show(false);
- document.body.classList.toggle("developer-mode",on);
- document.getElementById('user-workspace').style.display=on?'none':'';
- document.getElementById('user-footer').style.display=on?'none':'';
- document.getElementById('developer-workspace').hidden=!on;
- document.getElementById('user-tab').classList.toggle('selected',!on);
- document.getElementById('developer-tab').classList.toggle('selected',on);
- if(!on)fitCanvasBounds();else Dev.render();
-}
-const Dev=(()=>{
- const $=id=>document.getElementById(id), esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- const names=['Overview','Signals','Motion','Sensors','ROS Graph','TF Tree','Diagnostics','Host Resources','Inspector','Services','Parameters','Publish','Logs','Files & Terminal'];
- const colors=['#55c9e0','#bd92fa','#facc15','#4ed5a1','#fb7185','#f69c65'];
- let page='Overview', paused=false, ros=null, epoch=0, topics=[], subs=new Map(), stats=new Map(), series=new Map(), latest=new Map(), logs=[], frames=new Map(), graph=null, started=0, services=[], inspector='', manual=null;
- const defaultTopics=['/odom','/cmd_vel','/wheel_rpm','/imu/data','/scan','/battery_state','/rosout','/tf','/tf_static','/diagnostics','/developer/host_metrics'];
- function call(name,type,args={}){return new Promise((resolve,reject)=>{if(!ros||!state.rosConnected)return reject(Error('Connect to ROS first'));let done=false;const timer=setTimeout(()=>{done=true;reject(Error('Service timed out: '+name))},7000);new ROSLIB.Service({ros,name,serviceType:type}).callService(new ROSLIB.ServiceRequest(args),r=>{if(!done){clearTimeout(timer);resolve(r)}},e=>{if(!done){clearTimeout(timer);reject(Error(String(e)))}});});}
- function add(key,v,t){if(typeof v!=='number'||!Number.isFinite(v))return;let a=series.get(key)||[];a.push([t,v]);while(a.length&&(a[0][0]<t-600000||a.length>12000))a.shift();series.set(key,a);}
- function receive(name,m){const t=Date.now();let a=stats.get(name)||{count:0,times:[],last:0};a.count++;a.last=t;a.times.push(t);while(a.times.length>2000||a.times[0]<t-5000)a.times.shift();stats.set(name,a);latest.set(name,m);
- if(name===inspector&&!paused&&page==='Inspector')showRaw();
- if(name==='/odom'){add('odom linear',m.twist?.twist?.linear?.x,t);add('odom angular',m.twist?.twist?.angular?.z,t);add('position x',m.pose?.pose?.position?.x,t);add('position y',m.pose?.pose?.position?.y,t);const cmd=latest.get('/cmd_vel');if(cmd&&t-(stats.get('/cmd_vel')?.last||0)<1000)add('linear error',cmd.linear.x-m.twist.twist.linear.x,t);}
- if(name==='/cmd_vel'){add('command linear',m.linear?.x,t);add('command angular',m.angular?.z,t);}
- if(name==='/wheel_rpm'&&m.data?.length>=2){add('left RPM',m.data[0],t);add('right RPM',m.data[1],t);add('mean RPM',(m.data[0]+m.data[1])/2,t);for(const [i,k] of ['left speed','right speed'].entries())add(k,m.data[i]*2*Math.PI*0.095/60,t);add('wheel difference',m.data[0]-m.data[1],t);}
- if(name==='/imu/data'){for(const [field,label] of [['linear_acceleration','accel'],['angular_velocity','gyro']])for(const axis of ['x','y','z'])add(label+' '+axis,m[field]?.[axis],t);if(m.orientation&&m.orientation_covariance?.[0]!==-1&&Math.hypot(...Object.values(m.orientation))>0){const e=quaternionToEulerDeg(m.orientation);for(const k of ['roll','pitch','yaw'])add(k,e[k],t);}}
- if(name==='/battery_state'){add('voltage',m.voltage,t);if(m.percentage>=0&&m.percentage<=1)add('charge %',m.percentage*100,t);}
- if(name==='/scan'){const valid=(m.ranges||[]).filter(x=>Number.isFinite(x)&&x>=m.range_min&&x<=m.range_max);if(valid.length)add('nearest return',Math.min(...valid),t);if(m.ranges?.length)add('invalid %',100*(1-valid.length/m.ranges.length),t);}
- if(name==='/rosout'){logs.push({...m,received:t});if(logs.length>1000)logs.shift();}
- if(name==='/tf'||name==='/tf_static')for(const x of m.transforms||[])frames.set(x.child_frame_id,{...x,received:t,static:name==='/tf_static'});
- if(name==='/developer/host_metrics'){try{const h=JSON.parse(m.data);for(const [k,v]of Object.entries(h))add('host '+k,v,t);}catch{}}
- }
- function subscribe(name){if(subs.has(name))return;const def=topics.find(x=>x.name===name);if(!def)return;const s=new ROSLIB.Topic({ros,name,messageType:def.type,queue_length:1});s.subscribe(m=>receive(name,m));subs.set(name,s);}
- async function discover(){const token=epoch;try{const r=await call('/rosapi/topics','rosapi/srv/Topics');if(token!==epoch)return;topics=r.topics.map((name,i)=>({name,type:r.types[i]}));defaultTopics.forEach(subscribe);if(inspector)subscribe(inspector);if(page==='Signals')update();}catch(e){$('dev-link').textContent=e.message;}}
- function reset(){epoch++;manual?.unadvertise();for(const s of subs.values())s.unsubscribe();subs.clear();stats.clear();series.clear();latest.clear();frames.clear();logs=[];topics=[];services=[];graph=null;manual=null;}
- function hz(s){if(!s||Date.now()-s.last>5000)return 0;const a=s.times.filter(t=>t>Date.now()-5000);return a.length<2?0:(a.length-1)/Math.max(.001,(a[a.length-1]-a[0])/1000);}
- const card=(title,body,wide=false)=>`<div class="card ${wide?'wide':''}"><h3>${title}</h3>${body}</div>`;
- const chart=(title,keys,unit='')=>card(title,`<canvas data-keys="${esc(keys.join('|'))}" data-unit="${esc(unit)}"></canvas><div class="legend">${keys.map((k,i)=>`<span style="color:${colors[i%colors.length]}">● ${esc(k)}</span>`).join(' &nbsp; ')} · ${unit}</div>`);
- const options=()=>topics.map(t=>`<option value="${esc(t.name)}">${esc(t.name)} · ${esc(t.type)}</option>`).join('');
- function render(){if(!window.developerActive)return;$('dev-title').textContent=page;$('dev-nav').innerHTML=names.map(n=>`<button class="${page===n?'selected':''}" data-page="${n}">${n}</button>`).join('');$('dev-nav').querySelectorAll('button').forEach(b=>b.onclick=()=>{page=b.dataset.page;render()});let html='';
- if(page==='Overview'){html=`<div class="metrics" id="dev-metrics"></div><div class="grid">${chart('Wheel feedback',['left RPM','right RPM'],'rpm')}${chart('Command / response',['command linear','odom linear'],'m/s')}${card('Quick read','<div id="dev-read"></div>')}${card('Stream activity','<div id="dev-activity"></div>')}</div>`;}
- if(page==='Signals')html=card('Topics / received activity',`<p class="muted">Only monitored topics contribute counts. Subscribe selectively to limit bridge traffic.</p><div class="scroll"><table><thead><tr><th>Topic / type</th><th>Hz</th><th>Count</th><th>Age</th><th>Monitor</th></tr></thead><tbody id="dev-topic-table"></tbody></table></div>`);
- if(page==='Motion')html=`<div class="grid">${chart('Left / right feedback',['left RPM','right RPM'],'rpm')}${chart('All wheels • mean signed RPM',['mean RPM'],'rpm')}${chart('Wheel linear speed • radius 0.095 m',['left speed','right speed'],'m/s')}${chart('Wheel feedback difference',['wheel difference'],'rpm')}${chart('Command minus measured velocity',['linear error'],'m/s')}${chart('Linear command / odometry',['command linear','odom linear'],'m/s')}${chart('Angular command / odometry',['command angular','odom angular'],'rad/s')}${card('Odometry trajectory','<canvas id="dev-path"></canvas><p class="muted">Odometry estimate · meters · current session</p>')}${chart('Position history',['position x','position y'],'m')}</div>`;
- if(page==='Sensors')html=`<div class="grid">${chart('Orientation',['roll','pitch','yaw'],'degrees')}${chart('Acceleration',['accel x','accel y','accel z'],'m/s²')}${chart('Angular velocity',['gyro x','gyro y','gyro z'],'rad/s')}${card('LiDAR scan','<canvas id="dev-scan"></canvas>')}${chart('Nearest valid return',['nearest return'],'m')}${chart('Invalid scan readings',['invalid %'],'%')}${chart('Battery voltage',['voltage'],'V')}${chart('Reported state of charge',['charge %'],'%')}</div>`;
- if(page==='ROS Graph')html=card('Live ROS topology','<button id="graph-refresh">Refresh topology</button><p class="muted">Nodes → topics → subscribers. Click a node to highlight its edges.</p><div id="dev-graph" class="scroll">Refresh to query rosapi.</div>',true);
- if(page==='TF Tree')html=card('Transform relationships','<div id="dev-tf"></div><p class="muted">Static transforms do not expire. Dynamic transform age is browser receipt age.</p>');
- if(page==='Diagnostics')html=card('Component diagnostics','<div id="dev-diag"></div>');
- if(page==='Host Resources')html=`<p class="muted">Requires the included host_metrics.py collector running on the robot host. Unsupported measurements remain unavailable.</p><div class="grid">${chart('CPU utilization',['host cpu_percent'],'%')}${chart('Memory / swap',['host ram_percent','host swap_percent'],'%')}${chart('Temperature',['host temperature_c'],'°C')}${chart('Network throughput',['host network_rx_mbps','host network_tx_mbps'],'Mbps')}${chart('Disk usage',['host disk_percent'],'%')}${chart('GPU utilization',['host gpu_percent'],'%')}</div>`;
- if(page==='Inspector')html=card('Raw message inspector',`<div class="toolbar"><select id="inspect-topic"><option value="">Choose a topic</option>${options()}</select><button id="inspect-start">Inspect</button><input id="inspect-filter" placeholder="Filter JSON lines"></div><pre id="inspect-raw">Select a topic to receive real messages.</pre>`);
- if(page==='Services')html=card('Service call console','<div class="toolbar"><button id="services-refresh">Discover services</button><select id="service-name"></select></div><input id="service-type" placeholder="Service type, e.g. std_srvs/srv/Trigger" style="width:100%"><p class="muted">Calls may change robot state. Inspect the service request schema before submitting.</p><textarea id="service-json">{}</textarea><button id="service-call">Call service once</button><pre id="service-result"></pre>');
- if(page==='Parameters')html=card('ROS 2 node parameters','<p class="muted">Uses native ROS 2 parameter services through rosbridge.</p><div class="toolbar"><input id="param-node" placeholder="/node_name"><button id="param-list">List parameters</button></div><select id="param-name"></select><button id="param-get">Read</button><p class="muted">Edit the returned typed ParameterValue JSON, then set.</p><textarea id="param-value">{}</textarea><button id="param-set">Set parameter</button><pre id="param-result"></pre>');
- if(page==='Publish')html=card('Manual publish','<p class="muted">Messages can actuate hardware. Publishes once per click; no background repeat.</p><div class="toolbar"><input id="pub-name" placeholder="/topic"><input id="pub-type" placeholder="package/msg/Message"></div><textarea id="pub-json">{}</textarea><button id="pub-once">Publish once</button><pre id="pub-result"></pre>');
- if(page==='Logs')html=card('ROS log stream','<div class="toolbar"><select id="log-level"><option value="0">All levels</option><option value="20">INFO+</option><option value="30">WARN+</option><option value="40">ERROR+</option></select><input id="log-search" placeholder="Search node or message"></div><pre id="dev-logs"></pre>');
- $('dev-body').innerHTML=html;FileTerminal.show(page==='Files & Terminal');wire();update();}
- function output(id,fn){return async()=>{try{$(id).textContent='Working…';const r=await fn();$(id).textContent=JSON.stringify(r,null,2)}catch(e){if($(id))$(id).textContent=e.message;}}}
- function wire(){if($('graph-refresh'))$('graph-refresh').onclick=output('dev-graph',async()=>{const token=epoch;const r=await call('/rosapi/nodes','rosapi/srv/Nodes');const nodes=await Promise.all(r.nodes.slice(0,100).map(async n=>({name:n,...await call('/rosapi/node_details','rosapi/srv/NodeDetails',{node:n})})));if(token!==epoch)throw Error('Connection changed');graph=nodes;setTimeout(drawGraph,0);return {nodes:nodes.length};});
- if($('inspect-start')){$('inspect-topic').value=inspector;$('inspect-start').onclick=()=>{inspector=$('inspect-topic').value;subscribe(inspector);showRaw()};$('inspect-filter').oninput=showRaw;showRaw();}
- if($('services-refresh')){$('services-refresh').onclick=output('service-result',async()=>{const r=await call('/rosapi/services','rosapi/srv/Services');services=r.services;$('service-name').innerHTML=services.map(n=>`<option>${esc(n)}</option>`).join('');return r;});$('service-name').onchange=output('service-result',async()=>{const r=await call('/rosapi/service_type','rosapi/srv/ServiceType',{service:$('service-name').value});$('service-type').value=r.type;return r;});$('service-call').onclick=output('service-result',()=>call($('service-name').value,$('service-type').value,JSON.parse($('service-json').value)));}
- if($('param-list')){const service=suffix=>$('param-node').value.replace(/\/$/,'')+'/'+suffix;$('param-list').onclick=output('param-result',async()=>{const r=await call(service('list_parameters'),'rcl_interfaces/srv/ListParameters',{prefixes:[],depth:0});$('param-name').innerHTML=r.result.names.map(n=>`<option>${esc(n)}</option>`).join('');return r;});$('param-get').onclick=output('param-result',async()=>{const r=await call(service('get_parameters'),'rcl_interfaces/srv/GetParameters',{names:[$('param-name').value]});$('param-value').value=JSON.stringify(r.values[0],null,2);return r;});$('param-set').onclick=output('param-result',()=>call(service('set_parameters'),'rcl_interfaces/srv/SetParameters',{parameters:[{name:$('param-name').value,value:JSON.parse($('param-value').value)}]}));}
- if($('pub-once'))$('pub-once').onclick=output('pub-result',async()=>{if(!state.rosConnected)throw Error('Connect to ROS first');const name=$('pub-name').value.trim(),type=$('pub-type').value.trim(),m=JSON.parse($('pub-json').value);if(!name||!type||!m||typeof m!=='object'||Array.isArray(m))throw Error('Provide topic, type, and a JSON object');manual?.unadvertise();manual=new ROSLIB.Topic({ros,name,messageType:type});manual.publish(new ROSLIB.Message(m));return {sent:name,note:'Submitted to bridge; delivery is not acknowledged.'};});
- }
- function showRaw(){if(!$('inspect-raw'))return;const value=latest.get(inspector);let s=value?JSON.stringify(value,null,2):'No data received.';const q=$('inspect-filter').value.toLowerCase();$('inspect-raw').textContent=q?s.split('\n').filter(l=>l.toLowerCase().includes(q)).join('\n'):s;}
- function update(){if(!window.developerActive||paused)return;const now=Date.now(),active=[...stats.values()].filter(s=>now-s.last<3000).length,total=[...stats.values()].reduce((a,s)=>a+s.count,0);if($('dev-metrics'))$('dev-metrics').innerHTML=[['Received messages',total.toLocaleString()],['Monitored streams',subs.size],['Fresh streams',active],['Session',started?Math.floor((now-started)/1000)+'s':'—']].map(([k,v])=>`<div class="card"><div class="muted">${k}</div><div class="value">${v}</div></div>`).join('');
- if($('dev-read'))$('dev-read').innerHTML=`<p class="${state.rosConnected?'good':'bad'}">${state.rosConnected?'Bridge connected':'Bridge disconnected'}</p><p class="muted">Freshness threshold: 3s · excludes static TF from warnings below.</p>`+[...subs.keys()].filter(n=>n!=='/tf_static'&&n!=='/rosout'&&(!stats.has(n)||now-stats.get(n).last>3000)).map(n=>`<p class="warn" style="font-size:12px;margin-top:9px">${esc(n)} · no recent data</p>`).join('');
- if($('dev-activity')){$('dev-activity').innerHTML=[...stats].sort((a,b)=>hz(b[1])-hz(a[1])).slice(0,6).map(([n,s])=>`<div style="margin:10px 0;font-size:11px">${esc(n)} <span style="float:right">${hz(s).toFixed(1)} Hz</span><div class="bar"><span style="width:${Math.min(100,hz(s))}%"></span></div></div>`).join('')||'<p class="muted">Waiting for real messages.</p>';}
- if($('dev-topic-table')){$('dev-topic-table').innerHTML=topics.map(t=>{const s=stats.get(t.name);return `<tr><td>${esc(t.name)}<div class="muted">${esc(t.type)}</div></td><td>${s?hz(s).toFixed(1):'—'}</td><td>${s?.count??'—'}</td><td>${s?((now-s.last)/1000).toFixed(1)+'s':'—'}</td><td><button data-topic="${esc(t.name)}">${subs.has(t.name)?'Monitoring':'Monitor'}</button></td></tr>`}).join('');$('dev-topic-table').querySelectorAll('button').forEach(b=>b.onclick=()=>subscribe(b.dataset.topic));}
- if($('dev-tf'))$('dev-tf').innerHTML=[...frames.values()].map(f=>`<details><summary>${esc(f.header.frame_id)} → ${esc(f.child_frame_id)} <span class="muted">${f.static?'STATIC':((now-f.received)/1000).toFixed(1)+'s ago'}</span></summary><pre>${esc(JSON.stringify(f.transform,null,2))}</pre></details>`).join('')||'<p class="muted">No transforms received on /tf or /tf_static.</p>';
- if($('dev-diag')){const d=latest.get('/diagnostics'),age=stats.get('/diagnostics');$('dev-diag').innerHTML=d?`<p class="muted">Last received ${((now-age.last)/1000).toFixed(1)}s ago</p>`+(d.status||[]).map(s=>`<details><summary class="${Number(s.level)===0?'good':Number(s.level)===1?'warn':'bad'}">${esc(s.name)} · ${['OK','WARN','ERROR','STALE'][Number(s.level)]||'UNKNOWN'} · ${esc(s.message)}</summary><pre>${esc(JSON.stringify(s.values,null,2))}</pre></details>`).join(''):'<p class="muted">Unavailable — no /diagnostics messages received.</p>';}
- if($('dev-logs')){const q=$('log-search').value.toLowerCase(),level=Number($('log-level').value);$('dev-logs').textContent=logs.filter(l=>l.level>=level&&`${l.name} ${l.msg}`.toLowerCase().includes(q)).slice(-200).map(l=>`${new Date(l.received).toLocaleTimeString()} [${l.level}] ${l.name}: ${l.msg}`).join('\n')||'No matching log messages.';}
- document.querySelectorAll('.dev canvas[data-keys]').forEach(drawChart);if($('dev-path'))drawSpatial($('dev-path'),false);if($('dev-scan'))drawSpatial($('dev-scan'),true);
- }
- function canvas(c){const dpr=window.devicePixelRatio||1,w=c.clientWidth||500,h=230;c.width=w*dpr;c.height=h*dpr;const x=c.getContext('2d');x.scale(dpr,dpr);x.font='10px monospace';return {x,w,h};}
- function drawChart(c){const {x,w,h}=canvas(c),end=Date.now(),start=end-Number($('dev-window').value)*1000,keys=c.dataset.keys.split('|'),all=keys.map(k=>(series.get(k)||[]).filter(p=>p[0]>=start)),values=all.flat().map(p=>p[1]);x.strokeStyle='#26303b';for(let i=0;i<5;i++){x.beginPath();x.moveTo(48,20+i*43);x.lineTo(w-12,20+i*43);x.stroke();}if(!values.length){x.fillStyle='#82909f';x.fillText('NO DATA · awaiting real telemetry',55,110);return;}let lo=Math.min(...values),hi=Math.max(...values);if(hi===lo){lo-=1;hi+=1;}const pad=(hi-lo)*.08;lo-=pad;hi+=pad;x.fillStyle='#85909f';for(let i=0;i<5;i++)x.fillText((hi-(hi-lo)*i/4).toFixed(2),0,24+i*43);all.forEach((a,i)=>{x.strokeStyle=colors[i%colors.length];x.beginPath();a.forEach((p,j)=>{const px=48+(p[0]-start)/(end-start)*(w-60),py=192-(p[1]-lo)/(hi-lo)*172;if(j===0||p[0]-a[j-1][0]>2000)x.moveTo(px,py);else x.lineTo(px,py)});x.stroke();});x.fillStyle='#85909f';x.fillText('-'+$('dev-window').value+'s',48,218);x.fillText('now',w-35,218);c.onmousemove=e=>{const fraction=Math.max(0,Math.min(1,(e.offsetX-48)/(w-60))),time=start+fraction*(end-start);c.title=keys.map((k,i)=>{const p=all[i].reduce((best,p)=>!best||Math.abs(p[0]-time)<Math.abs(best[0]-time)?p:best,null);return k+': '+(p?p[1].toFixed(3):'—')}).join('\n');};}
- function drawSpatial(c,scan){const {x,w,h}=canvas(c);let points=[];if(scan){const m=latest.get('/scan');if(m)points=(m.ranges||[]).map((r,i)=>Number.isFinite(r)&&r>=m.range_min&&r<=m.range_max?[r*Math.cos(m.angle_min+i*m.angle_increment),r*Math.sin(m.angle_min+i*m.angle_increment)]:null).filter(Boolean);}else{const a=series.get('position x')||[],b=series.get('position y')||[];points=a.map((p,i)=>[p[1],b[i]?.[1]??0]);}if(!points.length){x.fillStyle='#82909f';x.fillText('NO DATA',30,110);return;}const extent=Math.max(1,...points.flat().map(Math.abs)),scale=Math.min(w-40,h-40)/2/extent;x.strokeStyle='#29343e';x.beginPath();x.moveTo(w/2,0);x.lineTo(w/2,h);x.moveTo(0,h/2);x.lineTo(w,h/2);x.stroke();x.strokeStyle='#55c9e0';x.fillStyle='#55c9e0';x.beginPath();points.forEach(([a,b],i)=>{const px=w/2+a*scale,py=h/2-b*scale;if(scan)x.fillRect(px,py,2,2);else if(i)x.lineTo(px,py);else x.moveTo(px,py)});if(!scan)x.stroke();x.fillStyle='#facc15';x.fillText('±'+extent.toFixed(1)+' m',12,20);}
- function drawGraph(){if(!$('dev-graph')||!graph)return;const ts=[...new Set(graph.flatMap(n=>[...(n.publishing||[]),...(n.subscribing||[])]))],height=Math.max(graph.length,ts.length)*35+30;let edges='',nodes='';graph.forEach((n,i)=>{const y=i*35+25;nodes+=`<g data-node="${i}" style="cursor:pointer"><rect x="5" y="${y-14}" width="230" height="25" rx="5" fill="#222b35"/><text x="12" y="${y+2}" fill="#d8dee9" font-size="10">${esc(n.name)}</text></g>`;for(const [list,pub]of [[n.publishing,true],[n.subscribing,false]])for(const t of list||[]){const ty=ts.indexOf(t)*35+25;edges+=`<path data-edge="${i}" d="M ${pub?235:470} ${pub?y:ty} L ${pub?470:235} ${pub?ty:y}" stroke="${pub?'#55c9e0':'#bd92fa'}" opacity=".35" marker-end="url(#arrow)"/>`;}});ts.forEach((t,i)=>nodes+=`<text x="475" y="${i*35+27}" fill="#facc15" font-size="10">${esc(t)}</text>`);$('dev-graph').innerHTML=`<svg viewBox="0 0 1000 ${height}" style="height:${height}px"><defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3z" fill="#80909d"/></marker></defs>${edges}${nodes}</svg>`;$('dev-graph').querySelectorAll('[data-node]').forEach(n=>n.onclick=()=>{$('dev-graph').querySelectorAll('[data-edge]').forEach(e=>e.setAttribute('opacity',e.dataset.edge===n.dataset.node?'1':'.06'))});}
- $('dev-pause').onclick=()=>{paused=!paused;$('dev-pause').textContent=paused?'Resume view':'Pause view';if(!paused)update();};$('dev-window').onchange=update;
- $('dev-export').onclick=()=>{const b=new Blob([JSON.stringify({exported:new Date().toISOString(),source:'ROS bridge browser receipt',series:Object.fromEntries(series),topics:[...stats].map(([name,s])=>({name,count:s.count,last:s.last})),logs},null,2)],{type:'application/json'}),url=URL.createObjectURL(b),a=document.createElement('a');a.href=url;a.download='apollo-telemetry-'+Date.now()+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
- setInterval(()=>{if(state.rosConnected&&state.ros!==ros){reset();ros=state.ros;started=Date.now();discover();}else if(!state.rosConnected&&ros){reset();ros=null;started=0;render();}$('dev-link').textContent=state.rosConnected?'LIVE · '+subs.size+' monitored streams':'OFFLINE · no real telemetry';update();},1000);
- setInterval(()=>{if(ros&&state.rosConnected)discover()},15000);
- return {render};
-})();
-
-</script>
-<script>
-const FileTerminal=(()=>{
- const $=id=>document.getElementById(id), esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- let entries=[],path='',root='',selection=0,socket=null,terminal=null,loaded=false,request=0,previewRequest=0, observer=null;
- const token=document.querySelector('meta[name="terminal-token"]')?.content;
- function status(text){$('ft-status').textContent=text;}
- async function api(kind,path){if(!token)throw Error('Start terminal_server.py and open its dashboard URL to enable real file access.');const r=await fetch('/terminal-api/'+kind+'?path='+encodeURIComponent(path),{headers:{'X-Terminal-Token':token}});if(!r.ok){let message='Backend request failed ('+r.status+')';try{message=(await r.json()).error||message}catch{}throw Error(message)}return r.json();}
- const size=n=>n<1024?n+' B':n<1048576?(n/1024).toFixed(1)+' KB':(n/1048576).toFixed(1)+' MB';
- async function browse(next){const version=++request;++previewRequest;status('READING DIRECTORY…');try{const data=await api('list',next);if(version!==request)return;path=data.path;root=data.root;entries=data.entries;selection=0;loaded=true;$('ft-path').value=path;$('ft-target').textContent=data.target+' / FILESYSTEM';$('ft-root').textContent=root;$('ft-preview-title').textContent='FILE PREVIEW';$('ft-preview').textContent='Select a file and press Enter to inspect its contents.';draw();status(entries.length+' entries'+(data.truncated?' · listing limited to 5,000':'')+' · READ ONLY BROWSER');}catch(e){if(version===request)status(e.message);}}
- function draw(){const q=$('ft-filter').value.toLowerCase(),visible=entries.map((e,i)=>({...e,index:i})).filter(e=>e.name.toLowerCase().includes(q));if(!visible.some(e=>e.index===selection))selection=visible[0]?.index??-1;$('ft-list').innerHTML=visible.map((e,i)=>`<button class="ft-row ${selection===e.index?'ft-selected':''}" data-index="${e.index}" role="option" aria-selected="${selection===e.index}"><span class="ft-name">${i===visible.length-1?'└──':'├──'} ${e.directory?'+':'·'} ${esc(e.name)}${e.directory?'/':e.symlink?' ↗':''}</span><span>${e.directory?'DIR':size(e.size)}</span><span>${new Date(e.modified*1000).toLocaleDateString()}</span></button>`).join('')||'<div class="ft-empty">Directory is empty or no matches.</div>';$('ft-list').querySelectorAll('button').forEach(b=>{b.onclick=()=>{selection=Number(b.dataset.index);draw();$('ft-list').focus()};b.ondblclick=()=>{selection=Number(b.dataset.index);openSelected()}});const e=entries[selection];$('ft-selection').textContent=e?e.name+' · '+(e.directory?'directory':size(e.size)):'No selection';}
- async function openSelected(){const e=entries[selection];if(!e)return;const next=path.replace(/\/$/,'')+'/'+e.name;if(e.directory){await browse(next);return;}const version=++previewRequest;status('READING FILE…');try{const d=await api('preview',next);if(version!==previewRequest)return;$('ft-preview-title').textContent=e.name;$('ft-preview').textContent=d.text;status(size(d.size)+(d.truncated?' · showing first 64 KB':'')+(d.binary?' · binary file':' · UTF-8 preview'));}catch(err){if(version===previewRequest)status(err.message)}}
- function parent(){if(path&&path!==root)browse(path.substring(0,path.lastIndexOf('/'))||'/');}
- function resize(){if(!terminal||$('ft-shell-panel').hidden)return;const cols=Math.max(20,Math.floor(($('ft-terminal').clientWidth-20)/8.4));terminal.resize(cols,22);if(socket?.readyState===1)socket.send(JSON.stringify({type:'resize',cols,rows:22}));}
- function close(){socket?.close();socket=null;$('ft-shell-state').textContent='CLOSED';$('ft-shell-open').disabled=false;$('ft-shell-close').disabled=true;}
- function openShell(){if(socket)return;if(!token){status('Open this dashboard through terminal_server.py first.');return;}if(typeof Terminal==='undefined'){status('Terminal renderer failed to load. Check access to the xterm CDN and reload.');return;}$('ft-shell-panel').hidden=false;if(!terminal){terminal=new Terminal({cursorBlink:true,fontFamily:'"JetBrains Mono", monospace',fontSize:14,rows:22,scrollback:3000,theme:{background:'#050708',foreground:'#c5d4cf',cursor:'#facc15',selectionBackground:'#264759'}});terminal.open($('ft-terminal'));terminal.onData(data=>{if(socket?.readyState===1)socket.send(JSON.stringify({type:'input',data}));});observer=new ResizeObserver(resize);observer.observe($('ft-terminal'));}terminal.writeln('\r\n\x1b[33mConnecting to '+$('ft-target').textContent+'…\x1b[0m');socket=new WebSocket('ws://'+location.host+'/terminal-api/shell?token='+encodeURIComponent(token));const current=socket;$('ft-shell-open').disabled=true;$('ft-shell-close').disabled=false;$('ft-shell-state').textContent='CONNECTING';socket.onopen=()=>{if(socket!==current)return;$('ft-shell-state').textContent='LIVE';resize();terminal.focus()};socket.onmessage=e=>terminal.write(e.data);socket.onerror=()=>status('Shell connection failed. Check the backend terminal.');socket.onclose=()=>{if(socket===current)close();terminal.writeln('\r\n\x1b[90m[session closed]\x1b[0m');};}
- function init(){const el=$('files-terminal');el.innerHTML=`<div class="ft-box"><div class="ft-top"><strong id="ft-target">FILESYSTEM / NOT CONNECTED</strong><span>↑↓ select &nbsp; ENTER open &nbsp; BACKSPACE parent</span></div><div class="ft-pathbar"><span>❯</span><input id="ft-path" aria-label="Directory path" placeholder="Directory path"><button id="ft-go">Go</button><button id="ft-up">↑ Parent</button><button id="ft-refresh">Refresh</button></div><div class="ft-browser"><aside class="ft-places"><div class="ft-label">PLACES</div><button id="ft-home">⌂ Browser root</button><p id="ft-root">—</p><div class="ft-label" style="margin-top:24px">FILTER</div><input id="ft-filter" aria-label="Filter files" placeholder="Find a file…"><div class="ft-label" style="margin-top:24px">ACTIONS</div><button id="ft-inspect">↵ Open selection</button><button id="ft-shell-open">▸ Open shell</button><p class="ft-note">Shell commands execute on the displayed target with your account permissions.</p></aside><div class="ft-directory"><div class="ft-columns"><span>NAME</span><span>SIZE</span><span>MODIFIED</span></div><div id="ft-list" tabindex="0" role="listbox" aria-label="Directory contents"><div class="ft-empty">Connect the local backend to browse real files.</div></div><div id="ft-selection">No selection</div></div><div class="ft-preview-pane"><div class="ft-label" id="ft-preview-title">FILE PREVIEW</div><pre id="ft-preview">Select a file to inspect.\n\nDirectories, text files, configs, and logs are read from the connected host.</pre></div></div><div class="ft-status" id="ft-status">${token?'Backend ready':'Backend unavailable · open the dashboard through terminal_server.py'}</div></div><div id="ft-shell-panel" class="ft-box" hidden style="margin-top:16px"><div class="ft-top"><strong>TERMINAL <span id="ft-shell-state">CLOSED</span></strong><div><button id="ft-shell-clear">Clear view</button><button id="ft-shell-close" disabled>Close shell</button></div></div><div id="ft-terminal"></div></div>`;
- $('ft-go').onclick=()=>browse($('ft-path').value);$('ft-path').onkeydown=e=>{if(e.key==='Enter')browse(e.target.value)};$('ft-up').onclick=parent;$('ft-refresh').onclick=()=>browse(path);$('ft-home').onclick=()=>browse(root);$('ft-inspect').onclick=openSelected;$('ft-filter').oninput=draw;$('ft-shell-open').onclick=openShell;$('ft-shell-close').onclick=close;$('ft-shell-clear').onclick=()=>terminal?.clear();$('ft-list').onkeydown=e=>{if(['ArrowUp','ArrowDown','Enter','Backspace','Escape'].includes(e.key))e.preventDefault();const indices=entries.map((x,i)=>({x,i})).filter(({x})=>x.name.toLowerCase().includes($('ft-filter').value.toLowerCase())).map(({i})=>i),index=indices.indexOf(selection);if(e.key==='ArrowDown'||e.key==='ArrowUp'){selection=indices[Math.max(0,Math.min(indices.length-1,index+(e.key==='ArrowDown'?1:-1)))]??-1;draw();$('ft-list').querySelector('.ft-selected')?.scrollIntoView({block:'nearest'})}if(e.key==='Enter')openSelected();if(e.key==='Backspace')parent();if(e.key==='Escape'){$('ft-filter').value='';draw();}};}
- function show(on){if(!$('files-terminal'))return;$('files-terminal').hidden=!on;if(on){if(!$('ft-list'))init();if(!loaded&&token)browse('');resize();}else if($('ft-list'))close();}
- return {show};
-})();
-
-</script>
 
 <script>
-window.depthActive = false;
-const oakBundled = document.querySelector('meta[name="oak-dashboard-server"]');
-if(oakBundled) document.getElementById('ros-url').value = (location.protocol==='https:'?'wss://':'ws://')+location.hostname+':9090';
-const DepthNavigation = (()=>{
-// Native controls and canvas live in this document. Only robot data uses HTTP.
-const apiBase = document.querySelector('meta[name="oak-api-prefix"]')?.content || '';
-
-let viewActive=false;
-let model={},held=null,online=false,mapImage=new Image();const $=id=>document.getElementById('depth-'+id);
-async function post(path,data){try{const r=await fetch(apiBase+'/api/'+path,{method:'POST',keepalive:true,headers:{'Content-Type':'application/json','X-Terminal-Token':document.querySelector('meta[name="terminal-token"]')?.content||''},body:JSON.stringify(data)});if(!r.ok)throw Error(await r.text());}catch(e){$('status').textContent=e.message;online=false;held=null;}}
-function drive(v){post('cmd',{linear:v[0],angular:v[1]});}
-function release(){if(held){held=null;drive([0,0]);}}
-document.querySelectorAll('#depth-workspace [data-v]').forEach(b=>{b.onpointerdown=e=>{e.preventDefault();if(!online||!viewActive)return;held=b.dataset.v.split(',').map(Number);b.setPointerCapture(e.pointerId);drive(held)};b.onpointerup=release;b.onpointercancel=release;b.onlostpointercapture=release;});
-$('stop').onclick=()=>{held=null;post('stop',{enabled:true})};$('release').onclick=()=>post('stop',{enabled:false});$('halt').onclick=()=>{held=null;drive([0,0])};$('manual').onclick=()=>post('mode',{enabled:false});$('auto').onclick=()=>post('mode',{enabled:true});
-window.addEventListener('pagehide',release);
-window.addEventListener('blur',release);document.addEventListener('visibilitychange',()=>{if(document.hidden)release()});window.addEventListener('keydown',e=>{if(viewActive&&e.code==='Space'){e.preventDefault();$('stop').click()}});setInterval(()=>{if(viewActive&&held&&online)drive(held)},100);
-async function refresh(){if(!viewActive)return;try{const r=await fetch(apiBase+'/api/state');if(!r.ok)throw Error('OAK backend unavailable');model=await r.json();online=true;$('status').textContent=model.session_mode==='manual'?'Manual control · telemetry connected':model.camera_age<2?'Connected · camera live':'Connected · camera unavailable';$('mode').textContent=model.control?.mode||'—';$('reason').textContent=(model.control?.estop?'STOP ACTIVE · ':'')+(model.control?.reason||'Waiting for command mux');$('speed').textContent=(model.speed?.linear||0).toFixed(2)+' m/s';$('battery').textContent=model.battery?.voltage!=null?model.battery.voltage.toFixed(1)+' V':'—';$('nav').textContent=model.navigation||'Idle';const manualOnly=model.session_mode==='manual';$('camera').alt=manualOnly?'Camera off in manual mode':'Waiting for OAK RGB frames';$('auto').disabled=manualOnly;$('goalEnabled').disabled=manualOnly;if(manualOnly){$('goalEnabled').checked=false;$('nav').textContent='Manual session · start robot_mapping or robot_navigation for maps and goals'}}catch(e){online=false;held=null;$('status').textContent='Disconnected — command watchdog stops motors';}}
-setInterval(refresh,500);refresh();function camera(){if(viewActive&&!document.hidden&&model.session_mode&&model.session_mode!=='manual')$('camera').src=apiBase+'/camera.jpg?t='+Date.now();}setInterval(camera,150);camera();
-function draw(){const c=$('map'),ctx=c.getContext('2d'),m=model.map;if(!m)return;c.width=m.width;c.height=m.height;ctx.drawImage(mapImage,0,0,c.width,c.height);if(model.robot){const dx=model.robot.x-m.x,dy=model.robot.y-m.y,cs=Math.cos(m.yaw),sn=Math.sin(m.yaw);ctx.fillStyle='#168de2';ctx.beginPath();ctx.arc((cs*dx+sn*dy)/m.resolution,c.height-(-sn*dx+cs*dy)/m.resolution,3,0,7);ctx.fill();}}
-mapImage.onload=draw;setInterval(()=>{if(viewActive&&!document.hidden&&model.map)mapImage.src=apiBase+'/map.png?t='+Date.now()},1000);
-$('map').onclick=e=>{if(!viewActive||!$('goalEnabled').checked||!online||!model.map)return;const r=e.target.getBoundingClientRect(),m=model.map,lx=(e.clientX-r.left)/r.width*m.width*m.resolution,ly=(1-(e.clientY-r.top)/r.height)*m.height*m.resolution;post('goal',{x:m.x+Math.cos(m.yaw)*lx-Math.sin(m.yaw)*ly,y:m.y+Math.sin(m.yaw)*lx+Math.cos(m.yaw)*ly,yaw:0})};
-
-return {show(on){viewActive=on;if(!on){release();$('goalEnabled').checked=false;}else{refresh();camera();}}};
-})();
-function hideDepthNavigation(){
- DepthNavigation.show(false);window.depthActive=false;
- document.getElementById('depth-workspace').hidden=true;
- document.getElementById('depth-tab').classList.remove('selected');
+let dashboardTab = 'dwm';
+const bridgeHost = location.hostname || 'localhost';
+document.getElementById('ros-url').value = `${location.protocol === 'https:' ? 'wss' : 'ws'}://${bridgeHost}:9090`;
+function setDashboardTab(tab) {
+    if (tab === dashboardTab) return;
+    if (dashboardTab === 'dwm') {
+        for (const key of Object.keys(activeKeys)) { activeKeys[key] = false; updateVisualKeys(key, false); }
+        if (state.simTwist.linear !== 0 || state.simTwist.angular !== 0) stopRobot();
+    }
+    const frame = document.getElementById('oak-navigation');
+    if (dashboardTab === 'oak') {
+        // Release held input before unloading the view and its command timer.
+        if (frame.contentWindow && typeof frame.contentWindow.release === 'function') frame.contentWindow.release();
+        frame.removeAttribute('src');
+    }
+    dashboardTab = tab;
+    document.getElementById('dwm-main').style.display = tab === 'dwm' ? '' : 'none';
+    frame.hidden = tab !== 'oak';
+    if (tab === 'oak') frame.src = '/navigation';
+    for (const name of ['dwm', 'oak']) {
+        const button = document.getElementById('tab-' + name);
+        button.setAttribute('aria-pressed', String(name === tab));
+        button.style.background = name === tab ? '#854d0e' : 'transparent';
+    }
 }
-function showDepthNavigation(){
- if(window.depthActive)return;
- if(state.simTwist.linear!==0||state.simTwist.angular!==0)stopRobot();
- Object.keys(activeKeys).forEach(k=>{activeKeys[k]=false;updateVisualKeys(k,false)});
- FileTerminal.show(false);window.developerActive=false;window.depthActive=true;
- document.body.classList.add('developer-mode');
- document.getElementById('user-workspace').style.display='none';
- document.getElementById('user-footer').style.display='none';
- document.getElementById('developer-workspace').hidden=true;
- document.getElementById('depth-workspace').hidden=false;
- for(const id of ['user-tab','developer-tab'])document.getElementById(id).classList.remove('selected');
- document.getElementById('depth-tab').classList.add('selected');DepthNavigation.show(true);
-}
+document.getElementById('tab-dwm').style.background = '#854d0e';
 </script>
 </body>
 </html>
