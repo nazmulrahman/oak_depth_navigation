@@ -1,0 +1,39 @@
+# DepthAI ROS v2 (Humble package depthai_ros_driver), not the v3 API.
+/oak:
+  ros__parameters:
+    camera:
+      i_pipeline_type: RGBD
+      i_nn_type: none
+      i_enable_imu: true
+      i_enable_ir: true
+      # Moderate projector intensity; floodlight is unnecessary for RGB SLAM.
+      i_laser_dot_brightness: 400
+      i_floodlight_brightness: 0
+    rgb:
+      i_resolution: '1080P'
+      i_isp_num: 2
+      i_isp_den: 3
+      i_fps: 15.0
+    left:
+      i_resolution: '800P'
+      i_fps: 15.0
+    right:
+      i_resolution: '800P'
+      i_fps: 15.0
+    stereo:
+      i_align_depth: true
+      i_board_socket_id: 0
+      i_width: 1280
+      i_height: 720
+      i_subpixel: true
+      i_lr_check: true
+    imu:
+      i_message_type: IMU
+      i_sync_method: LINEAR_INTERPOLATE_ACCEL
+      i_acc_cov: 0.1
+      i_gyro_cov: 0.0025
+      i_rot_cov: 0.03
+      i_acc_freq: 200
+      i_gyro_freq: 200
+      i_enable_rotation: false
+      i_enable_mag: false

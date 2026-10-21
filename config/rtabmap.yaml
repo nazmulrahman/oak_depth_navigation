@@ -1,0 +1,26 @@
+/**:
+  ros__parameters:
+    approx_sync: true
+    approx_sync_max_interval: 0.04
+    topic_queue_size: 20
+    sync_queue_size: 20
+    qos: 2
+    qos_camera_info: 2
+    qos_imu: 2
+    wait_for_transform: 0.3
+    Vis/MaxFeatures: '2000'
+    # RTAB-Map library parameters must be strings.
+    Rtabmap/DetectionRate: '2.0'
+    RGBD/LinearUpdate: '0.08'
+    RGBD/AngularUpdate: '0.08'
+    Grid/FromDepth: 'true'
+    Grid/3D: 'true'
+    Grid/CellSize: '0.05'
+    Grid/RangeMin: '0.3'
+    Grid/RangeMax: '5.0'
+    Grid/NormalsSegmentation: 'true'
+    Grid/MaxGroundAngle: '25'
+    Grid/MaxObstacleHeight: '2.0'
+    Grid/RayTracing: 'true'
+    GridGlobal/MinSize: '5.0'
+    Mem/NotLinkedNodesKept: 'false'

@@ -1,0 +1,26 @@
+# Existing DWM chassis, firmware and wheel wiring. All distances are metres.
+serial_port: /dev/dwm_nano
+baud_rate: 115200
+wheel_radius: 0.095
+wheel_separation: 0.430
+wheel_rpm_sign: -1.0
+max_wheel_rpm: 94.5
+max_pwm: 255
+min_pwm: 25
+kick_pwm: 70
+kick_duration: 0.15
+max_linear_speed: 0.15
+max_angular_speed: 0.40
+# EXAMPLE MOUNT: replace with the camera pose relative to ground-level
+# base_footprint, whose XY origin is the sprocket axle midpoint.
+# Looking forward, ROS axes are X forward, Y left, Z up; angles are radians.
+camera_mount:
+  x: 0.0
+  y: 0.0
+  z: 0.50
+  roll: 0.0
+  pitch: 0.0
+  yaw: 0.0
+map_root: ~/oak_maps
+dashboard_host: 0.0.0.0
+dashboard_port: 8080

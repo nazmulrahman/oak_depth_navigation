@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<!--
+  dwm01.urdf
+
+  NED-ROBO-DWM-01 robot description.
+
+  Frame convention: x = forward, y = left, z = up (REP103).
+
+  base_link sits at the track sprocket axle centerline; this matches
+  the (0,0) reference point used in the measurement sketches, so every
+  offset below is copied straight from those numbers with no extra
+  math. base_footprint is added underneath at true ground level
+  (base_link height = wheel_radius = 0.095 m) since Nav2/SLAM
+  conventionally want a ground-projected root frame.
+
+  Track sprockets are visual placeholders only (radius/separation are
+  real, thickness is a guess). Their joint angles are integrated from
+  measured RPM by wheel_odom, which also computes base odometry.
+-->
+<robot name="dwm01">
+
+  <material name="chassis_orange">
+    <color rgba="0.85 0.45 0.10 1.0"/>
+  </material>
+
+  <material name="dark_grey">
+    <color rgba="0.20 0.20 0.20 1.0"/>
+  </material>
+
+  <!-- ==================================================================
+       BASE FOOTPRINT (ground-projected root frame)
+       ================================================================== -->
+  <link name="base_footprint"/>
+
+  <joint name="base_footprint_joint" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link"/>
+    <!-- wheel_radius: base_link (axle height) sits 0.095 m above ground -->
+    <origin xyz="0 0 0.095" rpy="0 0 0"/>
+  </joint>
+
+  <!-- ==================================================================
+       BASE LINK (chassis)
+       Box: 950 mm long (450 mm front + 500 mm rear of axle) x 500 mm
+       wide x 220 mm tall, bottom face resting on the axle plane.
+       Box center offset: x = (0.45 - 0.50)/2 = -0.025, z = 0.22/2 = 0.11
+       ================================================================== -->
+  <link name="base_link">
+    <visual>
+      <origin xyz="-0.025 0 0.11" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.95 0.5 0.22"/>
+      </geometry>
+      <material name="chassis_orange"/>
+    </visual>
+    <collision>
+      <origin xyz="-0.025 0 0.11" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.95 0.5 0.22"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <!-- placeholder mass/inertia; replace with real measured values
+           if anything downstream (e.g. gazebo sim) needs accurate dynamics -->
+      <mass value="15.0"/>
+      <origin xyz="-0.025 0 0.11" rpy="0 0 0"/>
+      <inertia ixx="0.30" ixy="0" ixz="0" iyy="0.50" iyz="0" izz="0.40"/>
+    </inertial>
+  </link>
+
+  <!-- ==================================================================
+       TRACK SPROCKETS (visual only)
+       Separation 0.430 m (matches wheel_separation param) -> +/-0.215 m
+       in y. Radius 0.095 m (matches wheel_radius param). Thickness
+       0.06 m is an unmeasured placeholder for visualization.
+       ================================================================== -->
+  <link name="left_track_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.095" length="0.06"/>
+      </geometry>
+      <material name="dark_grey"/>
+    </visual>
+  </link>
+
+  <joint name="left_track_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="left_track_link"/>
+    <origin xyz="0 0.215 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <link name="right_track_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.095" length="0.06"/>
+      </geometry>
+      <material name="dark_grey"/>
+    </visual>
+  </link>
+
+  <joint name="right_track_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="right_track_link"/>
+    <origin xyz="0 -0.215 0" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <!-- ==================================================================
+       LIDAR
+       105 mm forward of axle, 210 mm above axle (both taken directly
+       from the sketch, front confirmed).
+       ================================================================== -->
+  <link name="lidar_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.03" length="0.04"/>
+      </geometry>
+      <material name="dark_grey"/>
+    </visual>
+  </link>
+
+  <joint name="lidar_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="lidar_link"/>
+    <origin xyz="0.105 0 0.210" rpy="0 0 0"/>
+  </joint>
+
+  <!-- ==================================================================
+       IMU
+       Centered over the axle (no forward/back or left/right offset in
+       the sketch), 120 mm above axle.
+       ================================================================== -->
+  <link name="imu_link"/>
+
+  <joint name="imu_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="imu_link"/>
+    <origin xyz="0 0 0.120" rpy="0 0 0"/>
+  </joint>
+
+</robot>
